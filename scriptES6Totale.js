@@ -259,3 +259,224 @@ while (arr1.length != arr2.length) {
 // stampo a video gli array dopo il ciclo
 console.log(`Array n. 1: ${arr1}`);
 console.log(`Array n. 2: ${arr2}`);
+
+
+/* JSNACK 8 */
+
+$(function(){
+
+  // creo array di oggetti auto
+  const arrAuto = [
+    {
+      marca: 'Tesla',
+      modello: 'Model S',
+      alimentazione: 'elettrico'
+    },
+    {
+      marca: 'Tesla',
+      modello: 'Model X',
+      alimentazione: 'elettrico'
+    },
+    {
+      marca: 'Fiat',
+      modello: 'Panda',
+      alimentazione: 'benzina'
+    },
+    {
+      marca: 'Ford',
+      modello: 'Puma',
+      alimentazione: 'diesel'
+    },
+    {
+      marca: 'Volkswagen',
+      modello: 'Polo',
+      alimentazione: 'metano'
+    },
+    {
+      marca: 'Mercedes-Benz',
+      modello: 'Classe A',
+      alimentazione: 'diesel'
+    },
+    {
+      marca: 'Volvo',
+      modello: 'V90',
+      alimentazione: 'diesel'
+    },
+    {
+      marca: 'Maserati',
+      modello: 'Ghibli',
+      alimentazione: 'benzina'
+    },
+    {
+      marca: 'Toyota',
+      modello: 'Auris',
+      alimentazione: 'benzina'
+    },
+    {
+      marca: 'Chevrolet',
+      modello: 'Matiz',
+      alimentazione: 'GPL'
+    }
+  ]; //end arrAuto
+
+  // filtro l'array creandone tre diversi suddividendo 
+  // le auto per alimentazione
+  const autoBenzina = arrAuto.filter((auto) => auto.alimentazione === 'benzina');
+  const autoDiesel = arrAuto.filter((auto) => auto.alimentazione === 'diesel');
+  const autoAltro = arrAuto.filter((auto) => auto.alimentazione != 'benzina' && auto.alimentazione != 'diesel');
+  
+  // punto alle liste html
+  let listaBenzina = $('#benzina');
+  let listaDiesel = $('#diesel');
+  let listaAltro = $('#altro');
+
+  // chiamo la funzione per stampare gli array nelle
+  // liste html
+  printAuto(autoBenzina, listaBenzina);
+  printAuto(autoDiesel, listaDiesel);
+  printAuto(autoAltro, listaAltro);
+  
+  /* FUNCTION */
+
+  // funzione che prende un array e un target,
+  // destruttura l'oggetto auto e crea un template li
+  // appendendolo al target 
+  function printAuto(arr, target) {
+    arr.forEach((auto) => {
+      let {marca, modello, alimentazione} = auto;
+
+      let html = 
+      `
+      <li>
+        Marca: ${marca}<br>
+        Modello: ${modello}<br>
+        Alimentazione: ${alimentazione}
+      </li><br>
+      `;
+    
+      target.append(html);
+    });
+  } //end function printAuto
+
+}); //end document ready
+
+
+/* JSNACK 9 */
+
+// creo array di stringhe
+const arrStr = ['Pippo','PLUTO', 'PaPeRiNo', 'topolino','minnIE'];
+
+// ciclo map() sulle stringhe dell'array
+// dove le porto in minuscolo e chiamo
+// la funzione per capitalizzare la prima
+// lettera di ogni stringa
+const arrMapped = arrStr.map((str) => {
+  let low = str.toLowerCase();
+  return capitalize(low);
+});
+
+// stampo in console il nuovo array
+console.log(arrMapped)
+
+/* FUNCTION */
+
+// salvo in una variabile il primo carattere
+// della stringa passata come lettera maiuscola.
+// con slice salvo la stringa meno la prima lettera
+// in una variabile e ritorno la prima lettera 
+// capitalizzata + il resto della stringa
+function capitalize(str) {
+  let first = str.charAt(0).toUpperCase();
+  let strSliced = str.slice(1, str.length)
+  return first + strSliced;
+}
+
+
+/* JSNACK 10 */
+
+// creo un array di animali
+const arrAnimali = [
+  {
+    nome: 'donnola',
+    famiglia: 'mustelidae',
+    classe: 'mammiferi'
+  },
+  {
+    nome: 'urogallo',
+    famiglia: 'phasianidae',
+    classe: 'uccelli'
+  },
+  {
+    nome: 'furetto',
+    famiglia: 'mustelidae',
+    classe: 'mammiferi'
+  },
+  {
+    nome: 'falco',
+    famiglia: 'falconidae',
+    classe: 'uccelli'
+  },
+  {
+    nome: 'gatto',
+    famiglia: 'felidae',
+    classe: 'mammiferi'
+  }
+];
+
+// filtro l'array di animali prendendo solo quelli
+// la cui proprietà 'classe' equivale a 'mammiferi'
+// e li salvo in un nuovo array 
+const arrMammiferi = arrAnimali.filter((animale) => animale.classe === 'mammiferi');
+
+// stampo a video il nuovo array
+console.log(arrMammiferi);
+
+
+/* JSNACK-11 */
+
+// creo array di persone
+const arrPeople = [
+  {
+    firstName: 'Mario',
+    lastName: 'De Gatti',
+    age: 32
+  },
+  {
+    firstName: 'Luigi',
+    lastName: 'De Luigis',
+    age: 12
+  },
+  {
+    firstName: 'Venanzio',
+    lastName: 'Benatti',
+    age: 86
+  },
+  {
+    firstName: 'Augusto',
+    lastName: 'De Filippi',
+    age: 8
+  },
+  {
+    firstName: 'Roberto',
+    lastName: 'Tedeschi',
+    age: 18
+  }
+];
+
+// con ciclo map sull'array di persone scorporo
+// l'oggetto persona e compio un controllo sulla 
+// proprietà age: se è maggiore o uguale a 18,
+// restituisco una stringa con template liberal dove
+// si dice che la persona può guidare, altrimenti
+// che non può guidare
+const arrDrive = arrPeople.map((person) => {
+  let {firstName, lastName, age} = person;
+  if (age >= 18) {
+    return `${firstName} ${lastName} può guidare.`
+  } else {
+    return `${firstName} ${lastName} non può guidare.`
+  }
+});
+
+// stampo a video il nuovo array
+console.log(arrDrive)
