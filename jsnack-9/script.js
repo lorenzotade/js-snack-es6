@@ -6,8 +6,7 @@ const arrStr = ['Pippo','PLUTO', 'PaPeRiNo', 'topolino','minnIE'];
 // la funzione per capitalizzare la prima
 // lettera di ogni stringa
 const arrMapped = arrStr.map((str) => {
-  let low = str.toLowerCase();
-  return capitalize(low);
+  return capitalize(str);
 });
 
 // stampo in console il nuovo array
@@ -21,7 +20,8 @@ console.log(arrMapped)
 // in una variabile e ritorno la prima lettera 
 // capitalizzata + il resto della stringa
 function capitalize(str) {
-  let first = str.charAt(0).toUpperCase();
-  let strSliced = str.slice(1, str.length)
+  let low = str.toLowerCase();
+  let first = low.charAt(0).toUpperCase();
+  let strSliced = low.slice(1, str.length)
   return first + strSliced;
 }

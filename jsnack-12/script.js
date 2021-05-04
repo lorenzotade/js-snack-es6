@@ -2,8 +2,8 @@
 // tabs che è un array di siti e una activeTab
 // che è l'indice della tab aperta in questo momento
 let browserWindow = {
-  tabs: ['GitHub', 'Facebook', 'PornHub', 'Famiglia Cristiana'],
-  activeTab: 1
+  tabs: ['GitHub', 'Facebook', 'PornHub','Instagram', 'Famiglia Cristiana','Instagram'],
+  activeTab: 5
 }
 // creo un array di social 
 const socials = ['Facebook', 'Instagram', 'Twitter', 'Parler', 'LinkedIn'];
@@ -26,7 +26,7 @@ browserWindow.tabs = filteredTabs;
 // dell'ultimo elemento), lo diminuisco di 1
 // attivando così la tab precedente
 if (activeTab > (filteredTabs.length - 1)) {
-  browserWindow.activeTab = activeTab - 1;
+  browserWindow.activeTab = (filteredTabs.length - 1);
 }
 // mostro a video l'oggetto
 console.log(browserWindow)

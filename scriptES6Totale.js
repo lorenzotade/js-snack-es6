@@ -371,8 +371,7 @@ const arrStr = ['Pippo','PLUTO', 'PaPeRiNo', 'topolino','minnIE'];
 // la funzione per capitalizzare la prima
 // lettera di ogni stringa
 const arrMapped = arrStr.map((str) => {
-  let low = str.toLowerCase();
-  return capitalize(low);
+  return capitalize(str);
 });
 
 // stampo in console il nuovo array
@@ -386,8 +385,9 @@ console.log(arrMapped)
 // in una variabile e ritorno la prima lettera 
 // capitalizzata + il resto della stringa
 function capitalize(str) {
-  let first = str.charAt(0).toUpperCase();
-  let strSliced = str.slice(1, str.length)
+  let low = str.toLowerCase();
+  let first = low.charAt(0).toUpperCase();
+  let strSliced = low.slice(1, str.length)
   return first + strSliced;
 }
 
@@ -488,8 +488,8 @@ console.log(arrDrive)
 // tabs che è un array di siti e una activeTab
 // che è l'indice della tab aperta in questo momento
 let browserWindow = {
-  tabs: ['GitHub', 'Facebook', 'PornHub', 'Famiglia Cristiana'],
-  activeTab: 1
+  tabs: ['GitHub', 'Facebook', 'PornHub','Instagram', 'Famiglia Cristiana','Instagram'],
+  activeTab: 5
 }
 // creo un array di social 
 const socials = ['Facebook', 'Instagram', 'Twitter', 'Parler', 'LinkedIn'];
@@ -512,7 +512,7 @@ browserWindow.tabs = filteredTabs;
 // dell'ultimo elemento), lo diminuisco di 1
 // attivando così la tab precedente
 if (activeTab > (filteredTabs.length - 1)) {
-  browserWindow.activeTab = activeTab - 1;
+  browserWindow.activeTab = (filteredTabs.length - 1);
 }
 // mostro a video l'oggetto
 console.log(browserWindow)
